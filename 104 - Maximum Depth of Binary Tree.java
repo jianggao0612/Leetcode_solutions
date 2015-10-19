@@ -14,29 +14,42 @@
 public int maxDepth(TreeNode root) {
     ArrayList<TreeNode> currentPath = new ArrayList<TreeNode>();
 	ArrayList<TreeNode> visitedNode = new ArrayList<TreeNode>();
-	int maximumLength = 0;
+	int maximumLength = 1;
 	TreeNode searchNode;
 
 	// corner case
 	if (root == null) 
-		return maximumLength;
+		return 0;
 
 	currentPath.add(root);
 
 	while (currentPath.size() > 0) {
+
+		// get the top element of the stack (the last element of the ArrayList)
 		searchNode = currentPath.get(currentPath.size() - 1);
 		
-		if ((searchNode.left != null) && (!visitedNode.contains(searchNode))) {
+		// determine whether to go further left
+		if ((searchNode.left != null) && (!visitedNode.contains(searchNode.left))) {
+
 			currentPath.add(searchNode.left);
+			// update the current maximum path
 			if (currentPath.size() > maximumLength) 
 				maximumLength = currentPath.size();
-		} else if ((searchNode.right != null) && (!visitedNode.contains(searchNode))){
+
+		} else if ((searchNode.right != null) && (!visitedNode.contains(searchNode.right))){ // determine whether to go further right
+
 			currentPath.add(searchNode.right);
+			// update the current maximum path
 			if (currentPath.size() > maximumLength) 
 				maximumLength = currentPath.size();
+
 		} else {
-			visitedNode.add(currentPath.get(currentPath.size() - 1));
-			currentPath.remove(currentPath.get(currentPath.size() - 1));
+
+			// set the node as visited
+			searchNode = currentPath.get(currentPath.size() - 1);
+			visitedNode.add(searchNode);
+			currentPath.remove(currentPath.size() - 1);
+		
 		}
     }
     return maximumLength;
