@@ -13,7 +13,7 @@
  * }
  */
 public class Solution {
-    public List<List<Integer>> levelOrderBottom(TreeNode root) {
+    public List<List<Integer>> levelOrder (TreeNode root) {
         List<List<Integer>> resultList = new ArrayList<List<Integer>>();
         ArrayList<TreeNode> currentLevel = new ArrayList<TreeNode>();
         ArrayList<TreeNode> nextLevel = new ArrayList<TreeNode>();
