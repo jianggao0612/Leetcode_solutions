@@ -1,0 +1,2 @@
+1. The transformation between iteration and recursion for tree is to use array or queue to emulate the process in recursion.
+For example, if(left exist, do left) else if (right exist, do right) else ( do current (usually, pop current and add to visited));
