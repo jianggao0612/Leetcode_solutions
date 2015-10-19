@@ -1,6 +1,6 @@
 /**
- * Binary Tree Level Order Traversal II
- * Given a binary tree, return the level order traversal of its nodes' values. (ie, from left to right, level by level). Bottom - top
+ * Binary Tree Level Order Traversal
+ * Given a binary tree, return the level order traversal of its nodes' values. (ie, from left to right, level by level).
  *
  * Using BFS to deal with every level
  *
@@ -14,7 +14,6 @@
  */
 public class Solution {
     public List<List<Integer>> levelOrderBottom(TreeNode root) {
-        List<List<Integer>> tempList = new ArrayList<List<Integer>>();
         List<List<Integer>> resultList = new ArrayList<List<Integer>>();
         ArrayList<TreeNode> currentLevel = new ArrayList<TreeNode>();
         ArrayList<TreeNode> nextLevel = new ArrayList<TreeNode>();
@@ -48,15 +47,11 @@ public class Solution {
 
             }
 
-            tempList.add(currentVal);
+            resultList.add(currentVal);
             // Go to the next level
             currentLevel = nextLevel;
 
         }
-
-        // Reverse the list to get the result list
-        for (int i = tempList.size() - 1; i >= 0; i--)
-        	resultList.add(tempList.get(i));
 
         return resultList;
 
