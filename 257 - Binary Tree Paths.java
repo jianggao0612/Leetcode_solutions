@@ -34,6 +34,7 @@ public class Solution {
 
     	currentPath.add(root);
 
+    	// TODO: Find a way to reduce generation of the former path of the string in each loop
     	while (currentPath.size() > 0) {
 
     		String currentPathStr = "";
