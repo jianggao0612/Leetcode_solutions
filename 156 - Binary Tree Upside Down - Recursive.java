@@ -30,22 +30,20 @@ public class Solution {
     	if (root == null)
     		return null;
 
-    	TreeNode node = root;
-    	TreeNode parent = null;
-    	TreeNode rightNode = null;
+    	TreeNode parent = root;
+        TreeNode leftNode = root.left;
+        TreeNode rightNode = root.right;
 
-    	while (node != null) {
+        if (rightNode != null) {
 
-    		TreeNode leftNode = node.left; // store the leftNode in the original tree for the next iteration
-    		node.left = rightNode; // update current node's left with its parent's right node
-    		rightNode = node.right; // store current node's right node for the next iteration
-    		node.right = parent; // update current node's right with the node from last iteration
-    		parent = node; // set current node as parent for next iteration
-    		node = leftNode; // go to next iteration
+            TreeNode newRoot = upsideDownBinaryTree(leftNode);
+            newRoot.right = parent;
+            newRoot.left = rightNode;
+            return newRoot;
 
-    	}
+        }
 
-    	return parent;
+        return root;
 
     }
 }
