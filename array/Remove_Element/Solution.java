@@ -1,3 +1,6 @@
+/**
+ * This method utilize that it doesn't matter what you leave beyond the new length.
+ *
 public class Solution {
     public int removeElement(int[] nums, int val) {
         int i = 0;
