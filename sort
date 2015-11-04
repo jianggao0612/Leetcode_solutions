@@ -1,0 +1,8 @@
+onClick(): Thread[main,5,main]
+GetPicture.search(): Thread[main,5,main]
+doInBackground(): Thread[AsyncTask #2,5,main]
+AsyncFlickrSearch.search(): Thread[AsyncTask #2,5,main]
+getRemoteXML(): Thread[AsyncTask #2,5,main]
+getRemoteImage(): Thread[AsyncTask #2,5,main]
+onPostExecute(): Thread[main,5,main]
+pictureReady(): Thread[main,5,main]
