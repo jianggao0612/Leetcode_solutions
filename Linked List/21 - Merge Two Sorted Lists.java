@@ -17,53 +17,52 @@ public class Solution {
     		return l2;
     	if (l2 == null)
     		return l1;
-    	if ((l1.next == null) && (l2.next == null)) {
-    		if (l1.val > l2.val) {
-    			l2.next = l1;
-    			return l2;
+
+    	ListNode head = null;
+    	ListNode curr = null;
+    	ListNode nodeOne;
+    	ListNode nodeTwo;
+
+    	// deal with the head for the merged list
+    	if (l1.val < l2.val) {
+
+    		head = l1;
+    		nodeOne = l1.next;
+    		nodeTwo = l2;
+
+    	} else {
+
+    		head = l2;
+    		nodeOne = l1;
+    		nodeTwo = l2.next;
+    	}
+    	
+    	curr = head;
+
+    	while ((nodeOne != null) && (nodeTwo != null)) {
+
+    		// link nodes to the merged list with the correct order
+    		if (nodeOne.val < nodeTwo.val) {
+    			curr.next = nodeOne;
+    			nodeOne = nodeOne.next;
     		} else {
-    			l1.next = l2;
-    			return l1;
+    			curr.next = nodeTwo;
+    			nodeTwo = nodeTwo.next;
     		}
+
+    		curr = curr.next;
     	}
 
-		ListNode prevl1 = l1;
-		ListNode currl1 = l1;
-		ListNode currl2 = l2;
-		ListNode nextl2 = l2.next;
+    	// deal with the tail nodes
+    	if (nodeOne == null) {
+    		curr.next = nodeTwo;
+    	} 
 
-		while ((currl1 != null) && (currl2.next != null) {
+    	if (nodeTwo == null) {
+    		curr.next = nodeOne;
+    	}
 
-			if (currl1.val <= currl2.val) {
-				prevl1 = currl1;
-				currl1 = currl1.next;
-				continue;
-			}
-
-			prevl1.next = currl2;
-			currl2.next = currl1;
-			currl2 = nextl2;
-			nextl2 = currl2.next;
-			prevl1 = prevl1.next;
-		} 
-
-		if (currl1 == null) {
-
-			prevl1.next = currl2;
-
-		}
-
-		if (currl2.next == null) {
-			if (currl2.val > currl1.val) {
-				currl2.next = currl1.next;
-				currl1.next = currl2;
-			} else {
-				prevl1.next = currl2;
-				currl2.next = currl1;
-			}
-		}
-
-		return l1;
+    	return head;
     	
         
     }
