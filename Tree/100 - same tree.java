@@ -7,7 +7,6 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
-
 public boolean isSameTree(TreeNode p, TreeNode q) {
     TreeNode nodeOne = p;
     TreeNode nodeTwo = q;
@@ -19,7 +18,7 @@ public boolean isSameTree(TreeNode p, TreeNode q) {
     	return true;
     } else if ((p == null) || (q == null)) {
     	return false;
-    } 
+    }
 
     // use preorder traverse to determine
     while (true) {
@@ -41,7 +40,7 @@ public boolean isSameTree(TreeNode p, TreeNode q) {
     	// NOTICE: easy to be wrong about the logic here! - deal with the left child
     	if (((nodeOne == null) && (nodeTwo != null)) || ((nodeOne != null) && (nodeTwo == null)))
     	    return false;
-    	
+
     	if (stackOne.isEmpty() || stackTwo.isEmpty())
     		return true;
     	nodeOne = stackOne.pop();
