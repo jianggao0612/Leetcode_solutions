@@ -95,7 +95,7 @@
              }
 
              if ((num * 3) == target) {
-                 if ((i + 3) < end && nums[i + 3] == num) {
+                 if ((i + 2) < end && nums[i + 2] == num) {
                      result.add(Arrays.asList(num1, num, num, num));
                  }
                  break;
@@ -122,7 +122,7 @@
              return;
          }
 
-         for (int i = start, j = end; i < j; i++, j--) {
+         for (int i = start, j = end; i < j;) {
              int num3 = nums[i];
              int num4 = nums[j];
 
