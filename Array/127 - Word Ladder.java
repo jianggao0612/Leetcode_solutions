@@ -30,19 +30,18 @@
          ArrayList<String> queue = new ArrayList<String>();
          int length = 0;
          queue.add(beginWord);
-         Iterator<String> words = wordList.iterator();
 
          while (!queue.isEmpty()) {
-             int level = queue.size;
+             int level = queue.size();
 
              for (int i = 0; i < level; i++) {
-                 String compareWord = pre.remove(0);
+                 String compareWord = queue.remove(0);
                  length++;
 
                  // compare the current word with the end word
                  int diff = 0;
                  for (int c = 0; c < compareWord.length(); c++) {
-                     if (compareWord.charAt(c) != endWord(c)) {
+                     if (compareWord.charAt(c) != endWord.charAt(c)) {
                          diff++;
                      }
                      if (diff > 1) {
@@ -51,13 +50,12 @@
                  }
 
                  if (diff == 1) {
-                     return length++;
+                     return ++length;
                  }
 
                  findTrans(compareWord, wordList, queue);
+                 length--;
              }
-
-             length = level;
          }
 
          return 0;
@@ -74,13 +72,13 @@
 
              if (i != 0) {
                  // append the first (i - 1) characters
-                 builder.append(word.subString(0, i));
+                 builder.append(word.substring(0, i));
              }
 
              // do transformation among a-z for the ith character
              for (char c = 'a'; c <= 'z'; c++) {
                  builder.append(c);
-                 builder.append(word.subString(i + 1, length));
+                 builder.append(word.substring(i + 1, length));
 
                  String transString = builder.toString();
                  if ((!transString.equals(word)) && (wordList.contains(transString))) {
